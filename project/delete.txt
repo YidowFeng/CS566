@@ -1,0 +1,21 @@
+DELETE(node)
+        if not node.left:
+            temp_node = node.right
+            replace(self, node, node.right)
+        elif not node.right:
+            temp_node = node.left
+            replace(self, node, node.left)
+        else:
+            node_min = tree_minimum(node.right)
+            node_color = node_min.color
+            temp_node = node_min.right
+            if node_min.p != node:
+                replace(self, node_min, node_min.right)
+                node_min.right = node.right
+                node_min.right.p = node_min
+            replace(self, node, node_min)
+            node_min.left = node.left
+            node_min.left.p = node_min
+            node_min.color = node.color
+        if node_color == BLACK:
+            self.delete_fixup(temp_node)

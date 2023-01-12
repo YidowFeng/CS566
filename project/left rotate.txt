@@ -1,0 +1,12 @@
+LEFT-ROTATE(T, x)
+01 y ← right[x] 
+02 right[x] ← left[y] // Set "y's left child" as "x's right child"
+03 p[left[y]] ← x // Set "x" as "the father of y's left child"
+04 p[y] ← p[x] // set "x's father" to "y's father"
+05 if p[x] = nil[T]
+06 	then root[T] ← y 
+07 else if x = left[p[x]]
+08 	then left[p[x]] ← y 
+09 else right[p[x]] ← y 
+10 left[y] ← x // make "x" the "left child of y"
+11 p[x] ← y // set "x's parent node" to "y"

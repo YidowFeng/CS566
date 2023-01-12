@@ -1,0 +1,24 @@
+RB-DELETE-FIX-UP(T,x) 
+While x!=root[T] and color[x]=BLACK   
+　　Do if x=left[p[x]]{	
+　　    Then w<-right[p[x]]    
+　　    If color[w]=RED	
+　　        Then{color[w]<-BLACK	
+　　         Color[p[x]]<-RED			
+　　         LEFT-ROTATE(T,p[x])
+　　         W<-right[p[x]]          }
+　   　If color[left[w]]=BLACK and color[right[w]]=BLACK 
+　    　   Then color[w]<-RED				
+　　        X<-p[x]
+　　   Else if color[right[w]]=BLACK		
+　   　          Then color[left[w]]<-BLACK
+　  　           color[w]<-RED 	
+　      　       RIGHT-ROTATE(T,w)
+　　             w<-right[p[x]]
+               else
+ 　　          color[w]<-color[p[x]]     
+　　           color[p[x]]<-BLACK	  
+　　           color[right[w]]<-BLACK  
+　　           LEFT_ROTATE(T,p[x])
+　　           x<-root[T]	}
+　　Else(do the same thing as above)
